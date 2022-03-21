@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h6 class="container lead mt-5">search</h6>
+    <div class="container">
+        <div class="error_list">
+            <div class="error_message p-5 bg-light border rounded-3">
+
+                {% if obj_list %}
+                    {% for obj in obj_list %}
+                        <a class="page-link" href="/item-detail/{{ obj.id }}">{{ obj.title }}</a>
+                    {% endfor %}
+
+                        {% else %}
+                        no matches
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

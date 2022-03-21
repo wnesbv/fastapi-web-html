@@ -1,0 +1,104 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+    <div class="container-fluid">
+        <img
+            src="{{ url_for('static', path='images/fastapi-seeklogo.com.svg') }}"
+            alt="logo"
+            height="32"
+        />
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user-list/">user list</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/item-list/">item list</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/docs/">Docs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/redoc/">Redoc</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Account
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="/register">Signup</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/login">Login</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        item
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="/create-item/"
+                                >create item</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/list-item-delete/"
+                                >delete item</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" action="/search/">
+                <input
+                    class="form-control me-2"
+                    name="query"
+                    type="search"
+                    placeholder="search to item"
+                    aria-label="search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                    search
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>

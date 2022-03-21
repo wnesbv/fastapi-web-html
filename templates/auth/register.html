@@ -1,0 +1,24 @@
+
+{% extends "index.html" %}
+{% block title %} register {% endblock %}
+
+{% block content %}
+
+    <h1 class="container display-6">register</h1>
+    <div class="container">
+        <div class="row my-5">
+            <form method="POST">
+                <div class="mb-3">
+                    <label>email</label>
+                    <input type="email" required placeholder="email" name="email" value="{{ email }}" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>password</label>
+                    <input type="password" required placeholder="password" value="{{ password }}" name="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-outline-primary btn-sm">submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

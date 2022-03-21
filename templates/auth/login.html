@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <h1 class="container display-6 my-4">login...</h1>
+    <div class="container">
+        <div class="row">
+
+            <div class="text-success font-weight-bold">
+                {% if msg %}
+                <div class="badge bg-success text-wrap" style="font-size: large;">
+                    {{msg}}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row my-4">
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label>email</label>
+                    <input type="email" required placeholder="email" name="email" value="{{ email }}" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>password</label>
+                    <input type="password" required placeholder="password" value="{{ password }}" name="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-outline-primary btn-sm">submit</button>
+            </form>
+
+        </div>
+        <div class="d-flex">
+            <a class="page-link" href="/reset-password/">reset password</a>
+        </div>
+
+    </div>
+
+{% endblock %}

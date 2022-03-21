@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% block title %} update comment {% endblock%}
+
+{% block content %}
+
+    <h1 class="container display-6 my-5">update comment...</h1>
+
+    <div class="container mt-3">
+        <form method="POST">
+            <div class="my-2">
+                <label for="exampleFormControlTextarea1" class="form-label">
+                    <sub>comment form</sub>
+                </label>
+
+                <textarea
+                    class="form-control"
+                    required
+                    name="opinion"
+                    id="exampleFormControlTextarea1"
+                    rows="3">
+                        {{ cmt.opinion }}
+                    </textarea>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary btn-sm">
+                submit
+            </button>
+        </form>
+    </div>
+
+{% endblock %}

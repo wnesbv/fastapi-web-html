@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+{% block title %} user list {% endblock %}
+
+{% block content %}
+
+    <h1 class="container display-6 my-5">user list..</h1>
+    <div class="container">
+        <div class="row">
+            {% if obj_list %}
+
+                {% for obj in obj_list %}
+                    <div class="col-lg-4 col-md-3 col-sm-10 mr-auto">
+                        <div class="card shadow-sm p-3 mb-2 bg-body rounded">
+
+                            <div class="card-header">
+                                <h2 class="lead">{{obj.id}}</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">name : {{obj.name}}</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">email : {{obj.email}}</p>
+                            </div>
+
+                            <div class="card-footer">
+                                <a class="btn btn-outline-primary btn-sm" href="/user-detail/{{obj.id}}">read more</a>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+                    {% else %}
+                    <h6>no information available</h6>
+
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

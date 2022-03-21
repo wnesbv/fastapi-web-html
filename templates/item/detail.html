@@ -1,0 +1,112 @@
+
+{% extends "base.html" %}
+{% block title %} detail {{ obj.title }} {% endblock%}
+
+{% block content %}
+
+    <h1 class="container display-6 my-5">item detail...</h1>
+
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="row">item title</th>
+                        <td colspan="2">{{ obj.title }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">description</th>
+                        <td colspan="2">{{ obj.description }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">author</th>
+                        <td colspan="2">{{ obj.owner_item_id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">image</th>
+                        <td colspan="2">
+                            <img src="/static/images/{{ obj.image_url }}" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a class="btn btn-outline-primary btn-sm" href="/update-item/{{ obj.id}}">
+            update item
+        </a>
+    </div>
+
+    {% if cmt_list %}
+        <div class="container mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <sub>comment</sub>
+                </div>
+                <div class="card-body">
+
+                    <ul class="list-group list-group-flush">
+                        {% for cmt in cmt_list %}
+                            <li class="list-group-item shadow p-3 mb-3">
+                                {{ cmt.opinion }}
+                                <sup class="float-end">
+                                    {{ cmt.created_at }}
+                                </sup>
+                                <a class="btn btn-outline-primary btn-sm" href="/update-comment/{{ cmt.id }}">update</a>
+                                <a class="btn btn-outline-danger btn-sm" href="/delete-comment/{{ cmt.id }}">delete</a>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="container">
+
+        <form method="POST">
+            <div class="my-2">
+                <label for="exampleFormControlTextarea1" class="form-label">
+                    <sub>comment form</sub>
+                </label>
+
+                <textarea
+                    class="form-control"
+                    required
+                    name="opinion"
+                    id="exampleFormControlTextarea1"
+                    rows="3">
+                        {{ opinion }}
+                    </textarea>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary btn-sm">
+                submit
+            </button>
+        </form>
+
+    </div>
+
+
+    <div class="container mt-3">
+        <span class="d-flex">
+            <a class="page-link mx-2" href="/like/{{obj.id}}">to like</a>
+            <a class="page-link mx-2" href="/dislike/{{obj.id}}">to dislike</a>
+        </span>
+        <ul class="list-group list-group-horizontal mb-5">
+
+            <li class="list-group-item shadow m-2">
+                <span class="badge bg-primary">{{ total_like }}</span>
+            </li>
+            <li class="list-group-item shadow m-2">
+                <span class="badge bg-danger">{{ total_dislike }}</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+{% endblock %}

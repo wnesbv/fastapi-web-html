@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+{% block title %} update {{ obj.title }} {% endblock%}
+
+{% block content %}
+
+    <h1 class="container display-6 my-5">update item</h1>
+    <div class="container">
+        <div class="row mb-3">
+
+            <form method="POST">
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        required
+                        placeholder="title"
+                        name="title"
+                        value="{{ obj.title }}"
+                        class="form-control"
+                    />
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label"
+                        >description</label
+                    >
+
+                    <textarea
+                        class="form-control"
+                        required
+                        name="description"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                    >
+                            {{ obj.description }}
+                        </textarea
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        type="file"
+                        required
+                        class="form-control"
+                        name="image_url"
+                        value="{{ obj.image_url }}"
+                        placeholder="item image"
+                    />
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary btn-sm">
+                    submit
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

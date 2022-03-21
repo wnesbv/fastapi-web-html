@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+{% block title %}create item{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <ul class="text-danger font-weight-bold">
+                {% for error in errors %}
+                    <li>{{error}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="row my-5">
+            <h1 class="text-center display-6">Create item</h1>
+            <form method="POST">
+                <div class="mb-3">
+                    <input type="text" required class="form-control" name="title" value="{{title}}" placeholder="item title">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">description</label>
+                    <textarea class="form-control" required name="description" id="exampleFormControlTextarea1" rows="3">
+                        {{description}}
+                    </textarea>
+                    <div id="help" class="form-text">help text</div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="file" required class="form-control" name="image_url" value="{{image_url}}" placeholder="item image">
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary btn-sm">submit</button>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

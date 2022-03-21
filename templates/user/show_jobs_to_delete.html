@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+{% block title %} delete user {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-6 text-center text-danger my-5">delete user</h1>
+            </div>
+            <div id="result" class="text-danger text-bold lead"></div>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr. No.</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Company URL</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in obj_list %}
+                    <tr>
+                        <th scope="row">loop index {{loop.index}}</th>
+                        <td>{{obj.title}}</td>
+                        <td>{{obj.company}}</td>
+                        <td>{{obj.company_url}}</td>
+                        <td>{{obj.location}}</td>
+                        <td>
+                            <a href="/delete-user/{{obj.u_id}}" class="btn btn-outline-danger btn-sm">
+                                delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

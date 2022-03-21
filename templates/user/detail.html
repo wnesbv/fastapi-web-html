@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+{% block title %} detail {{ obj.email }} {% endblock %}
+
+{% block content %}
+
+    <h1 class="container display-6 my-5">user detail</h1>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="row">id</th>
+                        <td colspan="2">{{ obj.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">name</th>
+                        <td colspan="2">{{ obj.name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">email</th>
+                        <td colspan="2">{{ obj.email }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a class="btn btn-outline-primary btn-sm" href="/update-user/{{ obj.id}}">
+            update user
+        </a>
+
+    </div>
+
+{% endblock %}

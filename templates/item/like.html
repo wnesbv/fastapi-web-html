@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+{% block title %} like item {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <form method="POST">
+            <div class="mb-3">
+                <input type="checkbox" required placeholder="checkbox" name="upvote" value="{{ upvote }}" class="">
+            </div>
+            <button type="submit" class="btn btn-outline-primary btn-sm">
+                like
+            </button>
+        </form>
+    </div>
+
+{% endblock %}
