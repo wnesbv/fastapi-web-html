@@ -27,6 +27,9 @@ class UserAdmin(AuthModelAdmin, model=User):
 
 
 class ItemAdmin(AuthModelAdmin, model=Item):
+    create_template = "custom_create.html"
+    edit_template = "custom_edit.html"
+    # ...
     column_list = [Item.id, Item.title, Item.owner_item_id]
     form_columns = [Item.title, Item.description]
     column_details_list = [Item.id, Item.title, Item.owner_item_id, Item.description]

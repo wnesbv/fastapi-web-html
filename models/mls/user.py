@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Boolean, Column, Integer, String, Text, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 
 from db_config.storage_config import Base
@@ -37,7 +37,7 @@ class Item(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
-    description = Column(String, index=True)
+    description = Column(Text, index=True)
     image_url = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     # ...

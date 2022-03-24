@@ -10,21 +10,32 @@
     {% block head %}
     {% endblock %}
     <title>{{ title }}</title>
+
   </head>
+
   <body>
+
     {% block body %}
+
     <main>
       {% block main %}
       {% endblock %}
     </main>
+
     {% endblock %}
-    <script type="text/javascript" src="{{ url_for('admin:statics', path='js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('admin:statics', path='js/tabler.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('admin:statics', path='js/popper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('admin:statics', path='js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('admin:statics', path='js/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('admin:statics', path='js/main.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('admin:statics', path='js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('admin:statics', path='js/tabler.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('admin:statics', path='js/popper.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('admin:statics', path='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('admin:statics', path='js/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('admin:statics', path='js/main.js') }}"></script>
+
     {% block tail %}
     {% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
   </body>
 </html>

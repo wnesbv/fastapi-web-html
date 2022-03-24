@@ -1,4 +1,3 @@
-
 from typing import TYPE_CHECKING, List, Type, Union
 
 import dataclasses
@@ -43,7 +42,7 @@ __all__ = [
 @dataclass
 class User:
 
-    identifier: str = "details of the administrator@gmail.com"
+    identifier: str = " 'letters of credit of the administrator' @gmail.com"
     password: str = "$2b$12$gNUwKX24HyMiGxOsJTwloOVoY6pUDnL6PjnOZJSRLNDuv1LFvTfKW"
 
     scopes: list[str] = dataclasses.field(default_factory=list)
@@ -67,7 +66,7 @@ secret_key = settings.SECRET_KEY
 
 user_provider = InMemoryProvider(
     {
-        "details of the administrator@gmail.com": User(scopes=["auth: impersonate_others"]),
+        " 'letters of credit of the administrator' @gmail.com": User(scopes=["auth: impersonate_others"]),
         "customer@localhost": User(identifier="customer@localhost"),
     }
 )

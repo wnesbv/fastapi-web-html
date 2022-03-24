@@ -1,11 +1,14 @@
-{% extends "base.html" %} {% block title %}create item{% endblock %} {% block
-content %}
+
+{% extends "base.html" %}
+{% block title %}create item{% endblock %}
+
+{% block content %}
 
 <div class="container">
     <div class="row">
         <ul class="text-danger font-weight-bold">
             {% for error in errors %}
-            <li>{{error}}</li>
+                <li>{{ error }}</li>
             {% endfor %}
         </ul>
     </div>
@@ -18,7 +21,7 @@ content %}
                     required
                     class="form-control"
                     name="title"
-                    value="{{title}}"
+                    value="{{ title }}"
                     placeholder="item title"
                 />
             </div>
@@ -68,13 +71,12 @@ content %}
 
 {% endblock %}
 
-{% block scripts %}
 
+{% block scripts %}
 <script>
     $('textarea').each(function () {
         var editor = Jodit.make(this);
         editor.value = '<p>start</p>';
     });
 </script>
-
 {% endblock %}
