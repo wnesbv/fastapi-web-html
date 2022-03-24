@@ -23,7 +23,7 @@
 
                             <div class="card-body">
                                 <p class="card-text">
-                                    {{ obj.description | truncate(200, False, '...', 0) | safe }}
+                                    {{ obj.description | striptags() | truncate(190, True, '...', 5) | safe }}
                                 </p>
                             </div>
 
