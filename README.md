@@ -1,2 +1,5 @@
 # fastapi-web-html
-https://aminalaee.github.io/sqladmin/
+registration with confirmation mail,
+jwt cookie authentication,
+admin panel (https://aminalaee .github.io/sqladmin /) ,
+textarea editor (jodit)
