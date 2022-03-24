@@ -23,12 +23,12 @@
 
                             <div class="card-body">
                                 <p class="card-text">
-                                    {{ obj.description | truncate(33, False, '...', 0) }}
+                                    {{ obj.description | truncate(200, False, '...', 0) | safe }}
                                 </p>
                             </div>
 
                             <div class="card-footer">
-                                <a class="btn btn-outline-primary btn-sm" href="/item-detail/{{obj.id}}">
+                                <a class="btn btn-outline-primary btn-sm" href="/item-detail/{{ obj.id }}">
                                     read more
                                 </a>
                             </div>

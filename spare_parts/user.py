@@ -1,5 +1,5 @@
 
-from fastapi import Request, Depends, HTTPException
+from fastapi import Depends, HTTPException
 
 from core.auth import auth
 from core.dependency import get_db

@@ -33,8 +33,11 @@ class ItemBase(BaseModel):
 class ItemCreate(ItemBase):
     pass
 
+
 class Item(ItemBase):
     id: int
+    image_url: str
+    description: str
     owner_item_id: int
 
     class Config:

@@ -28,6 +28,9 @@ class User(Base):
     user_like = relationship("Like", back_populates="like_user")
     user_dislike = relationship("Dislike", back_populates="dislike_user")
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Item(Base):
     __tablename__ = "item_t"
@@ -48,6 +51,9 @@ class Item(Base):
     item_like = relationship("Like", back_populates="like_item")
     item_dislike = relationship("Dislike", back_populates="dislike_item")
 
+    def __str__(self):
+        return self.id
+
 
 class Comment(Base):
     __tablename__ = "comment_c"
@@ -62,6 +68,9 @@ class Comment(Base):
     # ...
     cmt_user = relationship("User", back_populates="user_cmt")
     cmt_item = relationship("Item", back_populates="item_cmt")
+
+    def __str__(self):
+        return self.id
 
 
 # ...
@@ -78,6 +87,9 @@ class Like(Base):
     like_user = relationship("User", back_populates="user_like")
     like_item = relationship("Item", back_populates="item_like")
 
+    def __str__(self):
+        return str(self.like_user_id)
+
 
 class Dislike(Base):
     __tablename__ = "dislike_d"
@@ -90,3 +102,6 @@ class Dislike(Base):
     # ...
     dislike_user = relationship("User", back_populates="user_dislike")
     dislike_item = relationship("Item", back_populates="item_dislike")
+
+    def __str__(self):
+        return str(self.dislike_user_id)

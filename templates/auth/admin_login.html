@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <h1 class="container display-6 my-4">login...</h1>
+    <div class="container">
+        <div class="row my-4">
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label>email</label>
+                    <input type="email" required placeholder="email" name="email" value="root@localhost" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>password</label>
+                    <input type="password" required placeholder="password"  name="password" value="pa$$word" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-outline-primary btn-sm">submit</button>
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block title %} logout {% endblock %}
+
+{% block content %}
+
+    <h1 class="container lead my-5">logout...</h1>
+    <div class="container">
+        <h2 class="lead my-3">Hi {{ user }}! This is protected app area</h2>
+        <form action="/admin/logout" method="post">
+            <button class="btn btn-outline-danger btn-sm">logout</button>
+        </form>
+
+    </div>
+
+{% endblock %}

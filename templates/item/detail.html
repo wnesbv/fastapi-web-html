@@ -16,7 +16,7 @@
                     </tr>
                     <tr>
                         <th scope="row">description</th>
-                        <td colspan="2">{{ obj.description }}</td>
+                        <td colspan="2">{{ obj.description | safe }}</td>
                     </tr>
                     <tr>
                         <th scope="row">author</th>
@@ -32,7 +32,7 @@
             </table>
         </div>
 
-        <a class="btn btn-outline-primary btn-sm" href="/update-item/{{ obj.id}}">
+        <a class="btn btn-outline-primary btn-sm" href="/update-item/{{ obj.id }}">
             update item
         </a>
     </div>

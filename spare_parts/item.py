@@ -69,6 +69,18 @@ def list_item(db: Session):
     return obj_list
 
 
+def list_user_item(
+    db: Session,
+    owner_item_id,
+):
+
+    obj_list = db.query(Item).filter(
+        Item.owner_item_id == owner_item_id
+    )
+
+    return obj_list
+
+
 def retreive_item(
     id: int,
     db: Session

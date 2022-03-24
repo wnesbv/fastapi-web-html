@@ -17,6 +17,7 @@ from sqlalchemy.orm import Session
 from schemas.user import ItemCreate
 from spare_parts.item import (
     list_item,
+    list_user_item,
     retreive_item,
     update_item,
     item_delete,
@@ -50,7 +51,7 @@ async def create_item(
     item = create_new_item(db=db, obj_in=item_in, owner_item_id=current_user.id)
 
     return responses.RedirectResponse(
-        f"/item-detail/{item.id}", status_code=status.HTTP_302_FOUND
+        f"/item-detail/{ item.id }", status_code=status.HTTP_302_FOUND
     )
 
 
@@ -58,7 +59,7 @@ async def create_item(
 
 @router.get("/update-item/{id}")
 def to_update_item(
-    id: str,
+    id: int,
     request: Request,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_active_user),
@@ -69,7 +70,11 @@ def to_update_item(
 
         return templates.TemplateResponse(
             "item/update.html",
-            {"request": request, "id": id, "obj": obj},
+            {
+                "request": request,
+                "id": id,
+                "obj": obj,
+            },
         )
 
     return templates.TemplateResponse(
@@ -83,7 +88,7 @@ def to_update_item(
 
 @router.post("/update-item/{id}")
 async def to_update_item(
-    id: str,
+    id: int,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_active_user),
     title: str = Form(...),
@@ -101,7 +106,8 @@ async def to_update_item(
     ).first()
 
     return responses.RedirectResponse(
-        f"/item-detail/{obj.id}/?msg=Successfully-updated", status_code=status.HTTP_302_FOUND
+        f"/item-detail/{ obj.id }",
+        status_code=status.HTTP_302_FOUND,
     )
 
 
@@ -110,11 +116,16 @@ async def to_update_item(
 @router.get("/list-item-delete/")
 def list_item_delete(
     request: Request,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_active_user),
 ):
-    obj_list = list_item(db=db)
+    obj_list = list_user_item(
+        db, owner_item_id=current_user.id
+    )
+
     return templates.TemplateResponse(
-        "item/list_delete.html", {"request": request, "obj_list": obj_list}
+        "item/list_delete.html",
+        {"request": request, "obj_list": obj_list}
     )
 
 
@@ -137,6 +148,7 @@ async def delete_item(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_active_user),
 ):
+
     obj = retreive_item(id=id, db=db)
 
     if obj.owner_item_id == current_user.id or current_user.is_admin:
@@ -173,10 +185,11 @@ def item_detail(
     id: int,
     request: Request,
     db: Session = Depends(get_db),
-    msg: str = None
 ):
+
     obj = retreive_item(id=id, db=db)
     cmt_list = db.query(Comment).filter(Comment.cmt_item_id == id)
+
     # ...
     obj_like = db.query(Like).filter(Like.like_item_id == id)
     total_like = obj_like.count()
@@ -190,6 +203,5 @@ def item_detail(
         "cmt_list": cmt_list,
         "total_like": total_like,
         "total_dislike": total_dislike,
-        "msg": msg,
         }
     )

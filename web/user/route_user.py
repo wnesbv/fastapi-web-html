@@ -1,7 +1,6 @@
 
 from fastapi import (
     APIRouter,
-    HTTPException,
     Depends,
     Request,
     Form,
@@ -38,12 +37,17 @@ def to_update(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_active_user),
 ):
+
     obj = retreive_user(id=id, db=db)
     if obj.id == current_user.id or current_user.is_admin:
 
         return templates.TemplateResponse(
             "user/update.html",
-            {"request": request, "id": id, "obj": obj},
+            {
+                "request": request,
+                "id": id,
+                "obj": obj,
+            },
         )
 
     return templates.TemplateResponse(
@@ -64,6 +68,7 @@ async def to_update(
     email: str = Form(...),
     password: str = Form(...),
 ):
+
     user_details = UserUpdate(
         name=name, email=email, password=auth.hash_password(password)
     )
@@ -76,7 +81,7 @@ async def to_update(
     ).first()
 
     return responses.RedirectResponse(
-        f"/user-detail/{obj.id}/?msg=Successfully-updated",
+        f"/user-detail/{ obj.id }",
         status_code=status.HTTP_302_FOUND,
     )
 
@@ -92,15 +97,27 @@ def user_list(
     obj_list = list_user(db=db)
 
     return templates.TemplateResponse(
-        "user/list.html", {"request": request, "obj_list": obj_list}
+        "user/list.html",
+        {
+            "request": request,
+            "obj_list": obj_list,
+        }
     )
 
 
 @router.get("/user-detail/{id}")
-def user_detail(id: str, request: Request, db: Session = Depends(get_db)):
+def user_detail(
+    id: str,
+    request: Request,
+    db: Session = Depends(get_db),
+):
 
     obj = retreive_user(id=id, db=db)
 
     return templates.TemplateResponse(
-        "user/detail.html", {"request": request, "obj": obj}
+        "user/detail.html",
+        {
+            "request": request,
+            "obj": obj,
+        }
     )

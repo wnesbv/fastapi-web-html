@@ -9,3 +9,4 @@ python-decouple
 python-slugify
 fastapi-mail
 databases
+imia

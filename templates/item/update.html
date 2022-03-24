@@ -21,15 +21,21 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label"
+
+                <link
+                    rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.13.4/jodit.es2018.min.css"
+                />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.13.4/jodit.es2018.min.js"></script>
+
+                    <label for="editor" class="form-label"
                         >description</label
                     >
-
                     <textarea
                         class="form-control"
                         required
                         name="description"
-                        id="exampleFormControlTextarea1"
+                        id="editor"
                         rows="3"
                     >
                             {{ obj.description }}
@@ -54,5 +60,15 @@
             </form>
         </div>
     </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    $('textarea').each(function () {
+        var editor = Jodit.make(this);
+    });
+</script>
 
 {% endblock %}

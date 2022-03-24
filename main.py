@@ -11,6 +11,9 @@ from db_config.utils import check_db_connected, check_db_disconnected
 from web.base import api_router as web_app_router
 from v1.api import api_router
 
+from sqladmin import Admin
+from sqladmin.mds.models import UserAdmin, ItemAdmin
+
 
 def configure_static(app):
     app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -35,6 +38,11 @@ def start_application():
 
 app = start_application()
 
+# ...
+
+admin = Admin(app, engine)
+admin.register_model(UserAdmin)
+admin.register_model(ItemAdmin)
 
 # ...
 
