@@ -10,4 +10,8 @@ python-slugify
 fastapi-mail
 databases
 wtforms
+<<<<<<< HEAD
 imia
+=======
+imia
+>>>>>>> 8aa10fa3e476f7b0a008ceab0501900bdb653c07
