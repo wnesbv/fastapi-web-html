@@ -7,22 +7,25 @@
     <h1 class="container display-6 my-5">item detail...</h1>
 
     <div class="container">
-        <ul class="list-group list-group-flush">
-            <sup>item title</sup>
-            <li class="list-group-item mb-4">{{ obj.title }}</li>
-            <sup>description</sup>
-            <li class="list-group-item mb-4">{{ obj.description | safe }}</li>
-            <sup>aulior</sup>
-            <li class="list-group-item mb-4">{{ obj.owner_item_id }}</li>
-            <sup>image</sup>
-            <li class="list-group-item">
-                <img src="/static/images/{{ obj.image_url }}" alt="img" />
-            </li>
-        </ul>
+        <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            <ul class="list-group list-group-flush">
+                <sup>item title</sup>
+                <li class="list-group-item mb-4">{{ obj.title }}</li>
+                <sup>description</sup>
+                <li class="list-group-item mb-4">{{ obj.description | safe }}</li>
+                <sup>aulior</sup>
+                <li class="list-group-item mb-4">{{ obj.owner_item_id }}</li>
+                <sup>image</sup>
+                <li class="list-group-item">
+                    <img src="/static/images/{{ obj.image_url }}" alt="img" />
+                </li>
+            </ul>
 
-        <a class="btn btn-outline-primary btn-sm my-3" href="/update-item/{{ obj.id }}">
-            update item
-        </a>
+            <a class="btn btn-outline-primary btn-sm my-3" href="/update-item/{{ obj.id }}">
+                update item
+            </a>
+
+        </div>
     </div>
 
     {% if cmt_list %}
